@@ -1,8 +1,0 @@
-clothing1 流行系列羽絨外套 title
-		羽絨採用正鴨絨，保溫效果100%。 details
-	
-clothing2  Cerium LT 羽絨外套  title
-	智能拼接技術分配羽絨和化纖填充區域  details
-
-clothing3 無縫羽絨兩件式外套  title
-		外層為採用YKK主拉鍊的防風防水外套，內層為無縫羽絨外套  details
