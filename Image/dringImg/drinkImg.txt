@@ -1,0 +1,8 @@
+drink1:S.Pellegrino 聖沛黎洛 氣泡礦泉水 瓶裝1000ml title
+		礦泉水中的香檳，蘊s含豐富的礦物質，『國際廚師協會』佐餐指定水 details
+
+drink2:無糖堅果杏仁奶 title
+		澳洲市佔第一植物奶 !鈣含量更多，脂肪更低!素食者也能安心飲用 details
+
+deink3:檸檬氣泡飲 title
+		添加義大利產地的新鮮果汁，細緻的氣泡溫和又爽口  details
