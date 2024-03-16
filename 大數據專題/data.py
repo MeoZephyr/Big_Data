@@ -7,9 +7,10 @@ Created on Wed Mar  6 17:31:01 2024
 from auth import Auth
 import requests, json
 
-#補路線名稱
+
 url1 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/ODFare?%24format=JSON"
 url2 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/OD/TrainDate/{}/?%24format=JSON"
+url3 ="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/GeneralTimetable?%24top=30&%24format=JSON"
 class Data():
     #前置處理取得data_header
     def __init__(self) -> None:
@@ -17,13 +18,17 @@ class Data():
     def get_data_response(self,url):
         data_response = requests.get(url, headers = self.data_header)
         return json.loads(data_response.text)
-
     def get_ODFare(self):
         return self.get_data_response(url1)
     def get_AvailableSeat_Status_By_Date(self,date):
         return self.get_data_response(url2.format(date))
-
-
+    def get_GeneralTime_table(self):
+        return self.get_data_response(url3)
+    def get_OD():
+        O = input("請輸入起站:")
+        D = input("請輸入迄站:")
+        OD = [O,D]
+        return  OD
     '''
     #取得目標縣市路線資料
     def get_stop_of_route(self,cname,rname):
