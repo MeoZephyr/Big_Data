@@ -11,16 +11,15 @@ class Fare():
         data_response = requests.get(url, headers = self.data_header)
         return json.loads(data_response.text)
     '''
-    
     #self mean what??
     def get_fare(self):
-        get_data = Data().get_ODFare()
+        fare_data = Data().get_ODFare()
         TicketType = {"1":'一般票(單程票)',"2":'來回票',"3":'電子票証(悠遊卡/一卡通)',"4":'回數票',"5":'定期票(30天期)',"6":'定期票(60天期)',"7":'早鳥票',"8":'團體票'}
         FareClass = {"1":'成人',"2":'學生',"3":'孩童',"4":'敬老',"5":'愛心',"6":'愛心孩童',"7":'愛心優待/愛心陪伴',"8":'軍警',"9":'法優'}
         CabinClass = {"1":'標準座車廂',"2":'商務座車廂',"3":'自由座車廂'}
 
         all = dict()
-        for i in get_data:
+        for i in fare_data:
             TFC_list = []
             price_list = []
             fare = i['Fares']

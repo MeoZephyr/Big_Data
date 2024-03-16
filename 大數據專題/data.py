@@ -9,7 +9,7 @@ import requests, json
 
 #補路線名稱
 url1 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/ODFare?%24format=JSON"
-url2 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/OD/TrainDate/{}/?%24top=10&%24format=JSON"
+url2 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/OD/TrainDate/{}/?%24format=JSON"
 class Data():
     #前置處理取得data_header
     def __init__(self) -> None:
