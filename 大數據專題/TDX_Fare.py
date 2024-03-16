@@ -11,8 +11,11 @@ class Fare():
         data_response = requests.get(url, headers = self.data_header)
         return json.loads(data_response.text)
     '''
+#    def __init__(self,O,D) -> None:
+ #       dd = self.get_fare()
+  #      Fare.print_fare(dd,O,D)
     #self mean what??
-    def get_fare(self):
+    def get_fare():
         fare_data = Data().get_ODFare()
         TicketType = {"1":'一般票(單程票)',"2":'來回票',"3":'電子票証(悠遊卡/一卡通)',"4":'回數票',"5":'定期票(30天期)',"6":'定期票(60天期)',"7":'早鳥票',"8":'團體票'}
         FareClass = {"1":'成人',"2":'學生',"3":'孩童',"4":'敬老',"5":'愛心',"6":'愛心孩童',"7":'愛心優待/愛心陪伴',"8":'軍警',"9":'法優'}
@@ -49,9 +52,10 @@ class Fare():
         re_data = dict(zip(OD,TFCP))
         return re_data
     
-    def print_fare(data):
-        start = input("請輸入起站:")
-        end   = input("請輸入迄站:")
+    def print_fare(data,start,end):
+        #start = input("請輸入起站:")
+        #end   = input("請輸入迄站:")
+        
         key = start+"_"+end
         for i in data[key]:
             print("票種:"+i[0]+" 身分:"+i[1]+" 車廂:"+i[2]+" 價格:"+i[3]+"元")
@@ -59,8 +63,7 @@ class Fare():
         #print("OD:",OD,end="\n\n")
         #print("TFCP:",TFCP,end="\n\n")
         #print("re_data:",re_data,end="\n\n")
+'''
 
-if __name__ == '__main__':
-    dd = Fare().get_fare()
-    Fare.print_fare(dd)
 
+'''
