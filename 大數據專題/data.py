@@ -7,10 +7,12 @@ Created on Wed Mar  6 17:31:01 2024
 from auth import Auth
 import requests, json
 
-
+#票價
 url1 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/ODFare?%24format=JSON"
-url2 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/OD/TrainDate/{}/?%24format=JSON"
-url3 ="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/GeneralTimetable?%24top=30&%24format=JSON"
+#剩餘座位
+url2 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/OD/TrainDate/{}/?%24top=50&%24format=JSON"
+#時刻表
+url3 ="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/GeneralTimetable?%24top=10&%24format=JSON"
 class Data():
     #前置處理取得data_header
     def __init__(self) -> None:

@@ -3,17 +3,10 @@ import json
 from data import Data
 
 class Fare():
-    '''
-    #下方兩個函式取代本來的code，最終取得data_response(json格式)
-    def __init__(self) -> None:
-        self.data_header = Auth().get_data_header()
-    def get_data_response(self,url):
-        data_response = requests.get(url, headers = self.data_header)
-        return json.loads(data_response.text)
-    '''
-#    def __init__(self,O,D) -> None:
- #       dd = self.get_fare()
-  #      Fare.print_fare(dd,O,D)
+    def __init__(self,O,D) -> None:
+        dd = Fare.get_fare()
+#       dd = self.get_fare() #error but why?
+        Fare.print_fare(dd,O,D)
     #self mean what??
     def get_fare():
         fare_data = Data().get_ODFare()
@@ -52,18 +45,8 @@ class Fare():
         re_data = dict(zip(OD,TFCP))
         return re_data
     
-    def print_fare(data,start,end):
-        #start = input("請輸入起站:")
-        #end   = input("請輸入迄站:")
-        
+    def print_fare(data,start,end):    
         key = start+"_"+end
         for i in data[key]:
             print("票種:"+i[0]+" 身分:"+i[1]+" 車廂:"+i[2]+" 價格:"+i[3]+"元")
             print()
-        #print("OD:",OD,end="\n\n")
-        #print("TFCP:",TFCP,end="\n\n")
-        #print("re_data:",re_data,end="\n\n")
-'''
-
-
-'''
