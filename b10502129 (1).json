@@ -1,0 +1,10 @@
+{
+"first_name" : "Cheng",
+"last_name" : "HUI-YAN",
+"spouse" : "ZHANG,YOU-JIA",
+"age" : 41,
+"cities_stayed" : ["TaiChung"],
+"pet" : null,
+"children" : [{"first_name" : "Chang" , "age" : 19 , "hobbies" : ["singing","coding"]},
+               {"first_name" : "Chang" , "age" :16 , "hobbies" : ["singing","eat"]}]
+}
