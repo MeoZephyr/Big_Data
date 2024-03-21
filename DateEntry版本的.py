@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from tkcalendar import Calendar
+from tkcalendar import DateEntry
 
 def on_city1_select(event=None):
     selected_city1 = city1_var.get()
@@ -13,7 +13,7 @@ def on_city2_select(event=None):
     update_city1_dropdown(selected_city2)
 
 def on_date_select(event=None):
-    selected_date = cal.get_date()
+    selected_date = date_entry.get()
     update_display(None, selected_date)
 
 def update_display(selected_city1, selected_city2):
@@ -55,16 +55,16 @@ city2_dropdown = ttk.Combobox(city2_frame, textvariable=city2_var, values=cities
 city2_dropdown.pack(side="top")
 city2_dropdown.bind("<<ComboboxSelected>>", on_city2_select)
 
-# Date selection calendar
+# Date selection
 date_frame = tk.Frame(root)
 date_frame.pack(side="top", padx=10, pady=10, anchor="nw")
 
 date_label = tk.Label(date_frame, text="Select Date:")
 date_label.pack(side="top", pady=(0, 5))
 
-cal = Calendar(date_frame, selectmode="day", date_pattern="yyyy-mm-dd")
-cal.pack(side="top")
-cal.bind("<<CalendarSelected>>", on_date_select)
+date_entry = DateEntry(date_frame, width=12, background='darkblue', foreground='white', borderwidth=2)
+date_entry.pack(side="top")
+date_entry.bind("<<DateEntrySelected>>", on_date_select)
 
 # Display selected city and date
 display_frame = tk.Frame(root)
