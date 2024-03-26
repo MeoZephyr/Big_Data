@@ -12,6 +12,7 @@ def submit_selection():
     location1 = location1_combobox.get()
     location2 = location2_combobox.get()
     location3 = location3_combobox.get()
+    result = [location1, location2, location3]#[身分, 票券, 車廂]
     result_label.config(text=f"身分: {location1}, 票券: {location2}, 車廂: {location3}")
 
 # 視窗
