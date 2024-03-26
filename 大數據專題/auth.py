@@ -3,6 +3,7 @@ import json
 
 auth_url="https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token"
 
+
 class Auth():
 
     def __init__(self) -> None:

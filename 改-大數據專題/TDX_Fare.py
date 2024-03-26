@@ -31,7 +31,6 @@ class Fare():
                     cabin_class_desc = next((item[1] for item in CabinClass if item[0] == str(fare['CabinClass'])), '未知車廂')
                     fare_info.append([ticket_type_desc, fare_class_desc, cabin_class_desc, str(fare['Price']) + "元"])
                 break
-
         return fare_info
 
     def print_fare(self, fare_info):
