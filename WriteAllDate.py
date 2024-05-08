@@ -93,16 +93,13 @@ def get_data_response(url, urlname,Datetime):
         print(f"Error fetching data from {urlname}: {e}")
 
 Datetime = datetime.datetime.now()
+#不須指定日期:get_data_response(url,urlname,Datetime)  type:url,str,datetime(str)
+#需指定日期:get_data_response(url.format(Datetime.strftime("%Y-%m-%d")),urlname,Datetime)  type:url,str,datetime(str)
 get_data_response(url1,"ODFare",Datetime)
-print("ODFare done!")
 get_data_response(url2.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatus(OD)",Datetime)
-print("AvailableSeatStatus(OD) done!")
 get_data_response(url3,"GeneralTimetable",Datetime)
-print("GeneralTimetable done!")
 get_data_response(url4.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatus(Leg)",Datetime)
-print("AvailableSeatStatus(Leg) done!")
 get_data_response(url5.format(Datetime.strftime("%Y-%m-%d")),"DailyTimetable",Datetime)
-print("DailyTimetable done!")
 
 
 
