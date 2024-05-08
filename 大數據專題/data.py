@@ -16,7 +16,9 @@ url3 ="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/GeneralTimetable?%24t
 class Data():
     #前置處理取得data_header
     def __init__(self) -> None:
+        print("Data init begin!")
         self.data_header = Auth().get_data_header()        
+        print("Data init done!")
     def get_data_response(self,url):
         data_response = requests.get(url, headers = self.data_header)
         return json.loads(data_response.text)

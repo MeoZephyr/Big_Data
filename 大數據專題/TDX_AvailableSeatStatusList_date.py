@@ -2,8 +2,8 @@ import requests,json
 from data import Data
 
 class Seat():
-    def __init__(self,O,D) -> None:
-        date = input("輸入日期(格式:yyyy-mm-dd):")
+    def __init__(self,O,D,date) -> None:
+#        date = input("輸入日期(格式:yyyy-mm-dd):")
         self.seat_data = Data().get_AvailableSeat_Status_By_Date(date)
         self.view_seat(O,D)
 
