@@ -16,7 +16,7 @@ url1 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/ODFare?%24format=JSO
 #剩餘座位
 url2 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/OD/TrainDate/{}/?%24&%24format=JSON"
 #時刻表
-url3 ="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/GeneralTimetable?%24top=30&%24format=JSON"
+url3 ="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/GeneralTimetable?%24format=JSON"
 #取得指定[日期]對號座即時剩餘位資料({原始}列車區段Leg角度)
 url4="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/Leg/TrainDate/{}?%24&%24format=JSON"
 #取得指定[車次]的定期時刻表資料
