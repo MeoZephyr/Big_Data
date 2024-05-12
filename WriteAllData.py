@@ -21,6 +21,10 @@ url3 ="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/GeneralTimetable?%24f
 url4="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatus/Train/Leg/TrainDate/{}?%24&%24format=JSON"
 #取得指定[車次]的定期時刻表資料
 url5="https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/DailyTimetable/TrainDate/{}?%24format=JSON"
+#取得動態對號座剩餘座位資訊看板資料
+url6 = "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/AvailableSeatStatusList?%24%24format=JSON"  
+
+
 class Auth():
 
     def __init__(self, app_id, app_key):
@@ -100,6 +104,7 @@ get_data_response(url2.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatu
 get_data_response(url3,"GeneralTimetable",Datetime)
 get_data_response(url4.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatus(Leg)",Datetime)
 get_data_response(url5.format(Datetime.strftime("%Y-%m-%d")),"DailyTimetable",Datetime)
+get_data_response(url6,"AvailableSeatStatusList",Datetime)
 
 
 
