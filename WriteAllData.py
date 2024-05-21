@@ -1,3 +1,4 @@
+
 import os
 import json
 import datetime
@@ -26,7 +27,10 @@ except ImportError:
     os.system('pip install pathlib')
     time.sleep( 5 )
     from pathlib import Path
-
+#取得當前檔案的目錄路徑，__file__ : 當前檔案路徑 | parent:當前路徑的目錄路徑
+path = Path(__file__).parent #目標路徑
+os.chdir(path) #更改工作路徑
+print("path set done!")
 # from pathlib import Path
 # import requests
 # from pprint import pprint
@@ -99,22 +103,20 @@ def get_data_response(url, urlname,Datetime):
             print("data_response.raise_for_status() error")
             print(f"Error fetching data from {urlname}: {e}")
         # 如果一切順利，寫入 JSON 文件
-        Datetime = Datetime.strftime("%Y%m%d_%H_%M_%S")
-        filename = f"{urlname}_{Datetime}.json"        
+        count = Datetime.strftime("%Y%m%d_%H_%M_%S")
+        filename = f"{urlname}_{count}.json"        
         try:
             with open(filename, 'w') as f:
                 json.dump(data_response.json(), f)
         except Exception as e:
             print(f"Error writing data to {filename}: {e}")
-        print(f"{urlname} done!")
+        date = Datetime.strftime("%Y-%m-%d")
+        print(f"{urlname} Date:{date}done!")
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data from {urlname}: {e}")
 
 if __name__ == '__main__':
-    #取得當前檔案的目錄路徑，__file__ : 當前檔案路徑 | parent:當前路徑的目錄路徑
-    path = Path(__file__).parent #目標路徑
-    os.chdir(path) #更改工作路徑
-    print("path set done!")
+
     app_id = 'b11002048-6daacd6d-abea-4e80'         #輸入TDX會員中心處的app_id
     app_key = '7435f26a-c735-4069-9622-08367c809cd7'#輸入TDX會員中心處的app_key
 
@@ -134,16 +136,32 @@ if __name__ == '__main__':
 
     print("url set done!")
     Datetime = datetime.datetime.now()
-    print("Datetime get done! =>",Datetime)
+    date = Datetime.strftime("%Y-%m-%d")
+    print("Datetime get done! =>",date)
+
+
+    days = input("輸入數字n，代表抓今天和之後n天的資料:")
+    
+    newDay = Datetime
+    i = 0
+    while i<=int(days):
+        get_data_response(url1,"ODFare",newDay)
+        get_data_response(url2.format(newDay.strftime("%Y-%m-%d")),"AvailableSeatStatus(OD)",newDay)
+        get_data_response(url3,"GeneralTimetable",newDay)
+        get_data_response(url4.format(newDay.strftime("%Y-%m-%d")),"AvailableSeatStatus(Leg)",newDay)
+        get_data_response(url5.format(newDay.strftime("%Y-%m-%d")),"DailyTimetable",newDay)
+        get_data_response(url6,"AvailableSeatStatusList",newDay)
+        newDay = newDay+datetime.timedelta(days=1)#放在結尾
+        i+=1
     
     #不須指定日期:get_data_response(url,urlname,Datetime)  type:url,str,datetime(str)
     #需指定日期:get_data_response(url.format(Datetime.strftime("%Y-%m-%d")),urlname,Datetime)  type:url,str,datetime(str)
-    get_data_response(url1,"ODFare",Datetime)
-    get_data_response(url2.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatus(OD)",Datetime)
-    get_data_response(url3,"GeneralTimetable",Datetime)
-    get_data_response(url4.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatus(Leg)",Datetime)
-    get_data_response(url5.format(Datetime.strftime("%Y-%m-%d")),"DailyTimetable",Datetime)
-    get_data_response(url6,"AvailableSeatStatusList",Datetime) 
+    # get_data_response(url1,"ODFare",Datetime)
+    # get_data_response(url2.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatus(OD)",Datetime)
+    # get_data_response(url3,"GeneralTimetable",Datetime)
+    # get_data_response(url4.format(Datetime.strftime("%Y-%m-%d")),"AvailableSeatStatus(Leg)",Datetime)
+    # get_data_response(url5.format(Datetime.strftime("%Y-%m-%d")),"DailyTimetable",Datetime)
+    # get_data_response(url6,"AvailableSeatStatusList",Datetime) 
 
 
 
