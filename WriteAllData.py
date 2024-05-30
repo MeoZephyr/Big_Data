@@ -30,6 +30,7 @@ except ImportError:
 #取得當前檔案的目錄路徑，__file__ : 當前檔案路徑 | parent:當前路徑的目錄路徑
 path = Path(__file__).parent #目標路徑
 os.chdir(path) #更改工作路徑
+print(path)
 print("path set done!")
 # from pathlib import Path
 # import requests
@@ -140,19 +141,19 @@ if __name__ == '__main__':
     print("Datetime get done! =>",date)
 
 
-    days = input("輸入數字n，代表抓今天和之後n天的資料:")
+    day = int(input("輸入數字n，代表抓第n天的資料(今天為第0天):"))
     
-    newDay = Datetime
+    newDay = Datetime+datetime.timedelta(days=day)
     i = 0
-    while i<=int(days):
-        get_data_response(url1,"ODFare",newDay)
-        get_data_response(url2.format(newDay.strftime("%Y-%m-%d")),"AvailableSeatStatus(OD)",newDay)
-        get_data_response(url3,"GeneralTimetable",newDay)
-        get_data_response(url4.format(newDay.strftime("%Y-%m-%d")),"AvailableSeatStatus(Leg)",newDay)
-        get_data_response(url5.format(newDay.strftime("%Y-%m-%d")),"DailyTimetable",newDay)
-        get_data_response(url6,"AvailableSeatStatusList",newDay)
-        newDay = newDay+datetime.timedelta(days=1)#放在結尾
-        i+=1
+    # while i<=int(days):
+    get_data_response(url1,"ODFare",newDay)
+    get_data_response(url2.format(newDay.strftime("%Y-%m-%d")),"AvailableSeatStatus(OD)",newDay)
+    get_data_response(url3,"GeneralTimetable",newDay)
+    get_data_response(url4.format(newDay.strftime("%Y-%m-%d")),"AvailableSeatStatus(Leg)",newDay)
+    get_data_response(url5.format(newDay.strftime("%Y-%m-%d")),"DailyTimetable",newDay)
+    get_data_response(url6,"AvailableSeatStatusList",newDay)
+        # newDay = newDay+datetime.timedelta(days=1)#放在結尾
+        # i+=1
     
     #不須指定日期:get_data_response(url,urlname,Datetime)  type:url,str,datetime(str)
     #需指定日期:get_data_response(url.format(Datetime.strftime("%Y-%m-%d")),urlname,Datetime)  type:url,str,datetime(str)
